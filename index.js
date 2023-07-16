@@ -32,7 +32,7 @@ const forumProduct = { // for Forum low model
         inline_keyboard: [
             [{text: 'Forum Buckle Low Back to School', callback_data: 'forum-Black'}], [{text: 'Forum Buckle Low Pink Easter Egg', callback_data: 'forum-Pink'}],
             [{text: 'Forum Buckle Low Last Forum', callback_data: 'forum-White' }], [{text: 'Forum Buckle Low Blue Tint', callback_data: 'forum-Blue'}],
-            [{text: 'Forum Buckle Low', callback_data: 'forum-Brown'}]
+            [{text: 'Forum Buckle Low', callback_data: 'forum-Brown'}],  [{text: '⬅️НАЗАД', callback_data: 'back'}]
         ]
     })
 };
@@ -40,7 +40,8 @@ const forumProduct = { // for Forum low model
 const campusProduct = { // for Campus low model
     reply_markup: JSON.stringify( {
         inline_keyboard: [
-            [{text: 'Campus Cream', callback_data: 'campus-White'}], [{text: 'Campus Wild Moss', callback_data: 'campus-Brown'}]
+            [{text: 'Campus Cream', callback_data: 'campus-White'}], [{text: 'Campus Wild Moss', callback_data: 'campus-Brown'}],
+            [{text: '⬅️НАЗАД', callback_data: 'back'}]
         ]
     })
 };
@@ -78,24 +79,30 @@ bot.on('message', async msg => {
 });
 
 // data processing
-bot.on('callback_query', msg => {
+bot.on('callback_query', async msg => {
     console.log(msg);
     
     const data = msg.data;
     const chatId = msg.message.chat.id;
+    const messageId = msg.message.message_id;
 
     // shoe model data 
     if (data === 'campus') {
         bot.sendMessage(chatId, 'Cопутствующие товары:', campusProduct);
+        bot.deleteMessage(chatId, messageId);
     } else if (data === 'forum') {
         bot.sendMessage(chatId, "Cопутствующие товары:", forumProduct);
+        bot.deleteMessage(chatId, messageId);
     }
     
     // product model
     if (data === 'campus-White') {
+       //await bot.deleteMessage(chatId, messageId);
         bot.sendPhoto(chatId, campus.White01)
        //bot.sendMediaGroup(chatId, )
     } else if (data === 'campus-Brown') {
+       // await bot.deleteMessage(chatId, messageId);
         bot.sendPhoto(chatId, campus.Brown01)
+
     }
 });
