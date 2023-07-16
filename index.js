@@ -6,22 +6,23 @@ const token = '6318464500:AAFLiH8yOKFI3MT7GEorUtA6Xu6XnEF2ZpA';
 const bot = new TelegramApi(token, { polling: true });
 
 // shoes photo
-const forumPhotoLink = 'https://images.stockx.com/360/adidas-Campus-Bad-Bunny-Cream/Images/adidas-Campus-Bad-Bunny-Cream/Lv2/';
-const campusPhotoLink = 'https://images.stockx.com/360/adidas-Campus-Light-Bad-Bunny-Olive/Images/adidas-Campus-Light-Bad-Bunny-Olive/Lv2/'
+const CampusCreamLink = 'https://images.stockx.com/360/adidas-Campus-Bad-Bunny-Cream/Images/adidas-Campus-Bad-Bunny-Cream/Lv2/';
+const CampusOliveLink = 'https://images.stockx.com/360/adidas-Campus-Light-Bad-Bunny-Olive/Images/adidas-Campus-Light-Bad-Bunny-Olive/Lv2/';
+
 let campus = {
-    White01: `${forumPhotoLink}img01.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1677252256&h=384&q=57`,
-    White10: `${forumPhotoLink}img10.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1677252256&h=384&q=57`,
-    White19: `${forumPhotoLink}img19.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1677252256&h=384&q=57`,
-    White28: `${forumPhotoLink}img28.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1677252256&h=384&q=57`,
+    White01: `${CampusCreamLink}img01.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1677252256&h=384&q=57`,
+    White10: `${CampusCreamLink}img10.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1677252256&h=384&q=57`,
+    White19: `${CampusCreamLink}img19.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1677252256&h=384&q=57`,
+    White28: `${CampusCreamLink}img28.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1677252256&h=384&q=57`,
     gallery: [this.White01, this.White10, this.White19, this.White28],
-    Brown01: `${campusPhotoLink}img01.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1683246173&h=384&q=57`,
-    Brown10: `${campusPhotoLink}img10.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1683246173&h=384&q=57`,
-    Brown19: `${campusPhotoLink}img19.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1683246173&h=384&q=57`,
-    Brown28: `${campusPhotoLink}img28.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1683246173&h=384&q=57`
+    Brown01: `${CampusOliveLink}img01.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1683246173&h=384&q=57`,
+    Brown10: `${CampusOliveLink}img10.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1683246173&h=384&q=57`,
+    Brown19: `${CampusOliveLink}img19.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1683246173&h=384&q=57`,
+    Brown28: `${CampusOliveLink}img28.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1683246173&h=384&q=57`
 }
 
 //commands
-bot.setMyCommands( [
+bot.setMyCommands([
     {command: '/start', description: 'Запуск бота'},
     {command: '/catalog', description: 'Каталог'}
 ]);
@@ -65,12 +66,12 @@ bot.on('message', async msg => {
 
     if (text === '/start') {
       await bot.sendMessage(chatId, startText)
-      setTimeout( () => bot.sendMessage(chatId, 'Команда для просмотра каталога /catalog'), 1410)
+      setTimeout( () => bot.sendMessage(chatId, 'Команда для просмотра каталога /catalog'), 1350)
     }
 
-    if (text === `/catalog`) {
+    if (text === '/catalog') {
        await bot.sendPhoto(chatId, 'https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/01-fw23-bad-bunny-response-cl-exit-confirmed-clp-mhs-d_tcm221-1025437.jpg')
-       bot.sendMessage(chatId, 'Выберите модель:', shoesModel);
+       bot.sendMessage(chatId, 'Выберите модель:', shoesModel)
     }
 
      console.log(msg)
