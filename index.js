@@ -5,6 +5,21 @@ const token = '6318464500:AAFLiH8yOKFI3MT7GEorUtA6Xu6XnEF2ZpA';
 
 const bot = new TelegramApi(token, { polling: true });
 
+// shoes photo
+const forumPhotoLink = 'https://images.stockx.com/360/adidas-Campus-Bad-Bunny-Cream/Images/adidas-Campus-Bad-Bunny-Cream/Lv2/';
+const campusPhotoLink = 'https://images.stockx.com/360/adidas-Campus-Light-Bad-Bunny-Olive/Images/adidas-Campus-Light-Bad-Bunny-Olive/Lv2/'
+let campus = {
+    White01: `${forumPhotoLink}img01.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1677252256&h=384&q=57`,
+    White10: `${forumPhotoLink}img10.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1677252256&h=384&q=57`,
+    White19: `${forumPhotoLink}img19.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1677252256&h=384&q=57`,
+    White28: `${forumPhotoLink}img28.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1677252256&h=384&q=57`,
+    gallery: [this.White01, this.White10, this.White19, this.White28],
+    Brown01: `${campusPhotoLink}img01.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1683246173&h=384&q=57`,
+    Brown10: `${campusPhotoLink}img10.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1683246173&h=384&q=57`,
+    Brown19: `${campusPhotoLink}img19.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1683246173&h=384&q=57`,
+    Brown28: `${campusPhotoLink}img28.jpg?fm=png&auto=compress&w=576&dpr=1&updated_at=1683246173&h=384&q=57`
+}
+
 //commands
 bot.setMyCommands( [
     {command: '/start', description: 'Запуск бота'},
@@ -68,9 +83,18 @@ bot.on('callback_query', msg => {
     const data = msg.data;
     const chatId = msg.message.chat.id;
 
+    // shoe model data 
     if (data === 'campus') {
         bot.sendMessage(chatId, 'Cопутствующие товары:', campusProduct);
     } else if (data === 'forum') {
         bot.sendMessage(chatId, "Cопутствующие товары:", forumProduct);
+    }
+    
+    // product model
+    if (data === 'campus-White') {
+        bot.sendPhoto(chatId, campus.White01)
+       //bot.sendMediaGroup(chatId, )
+    } else if (data === 'campus-Brown') {
+        bot.sendPhoto(chatId, campus.Brown01)
     }
 });
