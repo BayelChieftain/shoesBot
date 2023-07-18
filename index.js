@@ -129,7 +129,6 @@ bot.on('message', async msg => {
     }
 
     if (text === '/catalog') {
-    //   await bot.sendPhoto(chatId, 'https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/01-fw23-bad-bunny-response-cl-exit-confirmed-clp-mhs-d_tcm221-1025437.jpg')
        bot.sendMessage(chatId, 'Выберите модель:', shoesModel)
     }
 
