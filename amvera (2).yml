@@ -6,7 +6,7 @@ meta:
 build:
   artifacts:
     main: index.js
-  command: 'build bot'
 run:
+  scriptName: C:\Users\User\Desktop\AdiBunnyBot
   persistenceMount: /data
   containerPort: 80
