@@ -175,7 +175,7 @@ bot.on('callback_query', async msg => {
      : data === 'forum-Grey' ? bot.sendPhoto(chatId, forums.Grey01, allInfo.Flast)
      : data === 'forum-Blue' ? bot.sendPhoto(chatId, forums.Blue01, allInfo.Fblue)
      : console.log('stopped')
-     //
+     
      data === 'blackInfo' ? bot.sendMessage(chatId, `${N} Back to School\n \n${sizes} \n ${Pr}`)
     : data === 'pinkInfo' ? bot.sendMessage(chatId, `${N} Pink Easter Egg \n \n❗️ Нет в наличии \n ${Pr}`)
     : data === 'lastInfo' ? bot.sendMessage(chatId, `${N} Last Forum\n \n${sizes} \n ${Pr}`)
