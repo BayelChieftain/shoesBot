@@ -5,8 +5,8 @@ meta:
     version: 18
 build:
   artifacts:
-    dev: nodemon index.js
-  command: npm run dev
+    main: index.js
+  command: 'build bot'
 run:
   persistenceMount: /data
   containerPort: 80
