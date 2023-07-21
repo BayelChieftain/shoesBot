@@ -136,13 +136,11 @@ bot.on('message', async msg => {
         bot.sendMessage(chatId, infoText)
     }
 
-     console.log(msg)
+
 });
 
 // data processing
 bot.on('callback_query', async msg => {
-    console.log(msg);
-    
     const data = msg.data;
     const chatId = msg.message.chat.id;
     const messageId = msg.message.message_id;
